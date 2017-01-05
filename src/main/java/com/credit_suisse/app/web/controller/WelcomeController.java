@@ -52,21 +52,21 @@ public class WelcomeController {
 //		ctx = new AnnotationConfigApplicationContext(SpringRootConfig.class);
 //		ctx = new ClassPathXmlApplicationContext("file:src/main/**/spring-bean-config.xml");
 
-//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
-//		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
-//			@Override
-//			public Double calculate() {
-//				double sum = 0;
-//				int counter = 0;
-//				for (Instrument i : getInstruments()) {
-//					System.out.println(i.getName());
-//					System.out.println(i.getPrice());
-//					sum += i.getPrice();
-//					counter++;
-//				}
-//				return sum*2;
-//			}
-//		});
+		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
+			@Override
+			public Double calculate() {
+				double sum = 0;
+				int counter = 0;
+				for (Instrument i : getInstruments()) {
+					System.out.println(i.getName());
+					System.out.println(i.getPrice());
+					sum += i.getPrice();
+					counter++;
+				}
+				return sum*2;
+			}
+		});
 		
 //		CalculatorEngine calculator = new CalculatorEngine(inputPath);
 		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
