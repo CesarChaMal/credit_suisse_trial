@@ -10,6 +10,7 @@ function cleanup() {
 
 trap cleanup EXIT
 
+# mvn -DskipTests compile
 mvn compile test
 
 mvn jetty:run & SERVER_PID=$$
