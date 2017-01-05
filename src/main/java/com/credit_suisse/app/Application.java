@@ -18,42 +18,22 @@ import com.credit_suisse.app.model.InstrumentPriceModifier;
 import com.credit_suisse.app.model.newInstrument;
 import com.credit_suisse.app.util.InstrumentUtil;
 
-//@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-//@ContextConfiguration(locations = {"file:src/test/**/applicationContext-test.xml"})
 public class Application {
-
-	private static final String HELP_MESSAGE = "Example : java -jar aggregator.jar file=c:\\temp\\big_input.txt";
 
     @Autowired
     static public ApplicationContext ctx;
 
 	public static void main(String[] args) {
 
-		String inputPath = null;
+//		String inputPath = "c:\\temp\\input.txt";
+//		String inputPath = "c:\\temp\\big_input.txt";
+//		String inputPath = "c:\\temp\\huge_input.txt";
+		
+		String inputPath = "src/main/resources/input.txt";
+//		String inputPath = "src/main/resources/big_input.txt";
+//		String inputPath = "src/main/resources/huge_input.txt";
 
-//		if (args.length == 0) {
-//			System.out.println(HELP_MESSAGE);
-//			System.exit(1);
-//		}
-//		for (String param : args) {
-//			String[] p = param.split("=");
-//			switch (p[0]) {
-//			case "file":
-//				inputPath = p[1];
-//				break;
-//			default:
-//				System.out.println(HELP_MESSAGE);
-//				System.exit(1);
-//			}
-//		}
-
-//		inputPath = "c:\\temp\\big_input.txt";
-		inputPath = "c:\\temp\\input.txt";
-
-//		ctx = new AnnotationConfigApplicationContext(SpringRootConfig.class);
-//		ctx = new ClassPathXmlApplicationContext("file:src/main/**/spring-bean-config.xml");
-//		InstrumentPriceModifierDao instrumentPriceModifierDao = ctx.getBean(InstrumentPriceModifierDao.class);
-		InstrumentPriceModifierDao instrumentPriceModifierDao = new InstrumentPriceModifierDaoImpl();
+		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
 
 		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
 //		Instrument newInstrument = new newInstrument("INSTRUMENT3", 6.0d, DefinerInstrument.getDate("03-Jan-2017"));
