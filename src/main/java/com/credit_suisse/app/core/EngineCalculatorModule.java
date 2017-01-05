@@ -6,12 +6,12 @@ import java.util.Map;
 import com.credit_suisse.app.model.Instrument;
 
 
-public class EngineInstrumentModule {
+public class EngineCalculatorModule {
 	
 	private Map<String, List<Instrument>> instruments;
 	private String instrument;
 	
-	public EngineInstrumentModule(String instrument) {
+	public EngineCalculatorModule(String instrument) {
 		this.instrument = instrument;
 	}
 	

@@ -2,9 +2,7 @@ package com.credit_suisse.app.model;
 
 import java.util.Date;
 
-import com.credit_suisse.app.core.module.AverageModule;
 import com.credit_suisse.app.core.module.OnFlyModule;
-import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 
 public class Instrument3 extends Instrument {
 

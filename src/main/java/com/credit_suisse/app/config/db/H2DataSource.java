@@ -19,11 +19,9 @@ public class H2DataSource {
 	// jdbc:h2:mem:testdb
 	@Bean
 	public DataSource dataSource() {
-
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("db/sql/create-db.sql").addScript("db/sql/insert-data.sql").build();
+		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("db/sql/h2/create-db.sql").addScript("db/sql/h2/insert-data.sql").build();
 		return db;
-
 	}
 
 	// Start WebServer, access http://localhost:8082

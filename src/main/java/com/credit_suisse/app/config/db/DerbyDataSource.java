@@ -16,11 +16,9 @@ public class DerbyDataSource {
 	//jdbc:derby:memory:testdb
 	@Bean
 	public DataSource dataSource() {
-
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.DERBY).addScript("db/sql/create-db.sql").addScript("db/sql/insert-data.sql").build();
+		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.DERBY).addScript("db/sql/derby/create-db.sql").addScript("db/sql/derby/insert-data.sql").build();
 		return db;
-
 	}
 
 }

@@ -1,11 +1,6 @@
 package com.credit_suisse.app.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 
 public abstract class Instrument implements Comparable<Instrument> {
 

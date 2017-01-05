@@ -13,13 +13,10 @@
 
 	<import resource="db-h2-config.xml"/>
 	<import resource="spring-bean-config.xml"/>
-	
-	<!--
 	<import resource="db-derby-config.xml"/> 
 	<import resource="db-hsqldb-config.xml"/>
- 	-->
  
-	<context:component-scan base-package="com.credit_suisse.web, com.credit_suisse.dao" />
+	<context:component-scan base-package="com.credit_suisse.app.web, com.credit_suisse.app.dao" />
 
 	<mvc:annotation-driven />
 

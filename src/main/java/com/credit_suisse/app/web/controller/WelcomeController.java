@@ -18,7 +18,6 @@ import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 import com.credit_suisse.app.model.newInstrument;
-import com.credit_suisse.app.util.InstrumentUtil;
 
 @Controller
 public class WelcomeController {

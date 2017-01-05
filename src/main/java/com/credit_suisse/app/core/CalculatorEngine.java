@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -174,16 +173,7 @@ public class CalculatorEngine {
 			} else {
 				AverageNewstInstrumentsModule module = (AverageNewstInstrumentsModule) MODULES.get(name).getInstrumentCalculateBehavior();
 				module.getInstruments().add(instrument);
-//				addAndSortToLastTenInstruments(instrument);
 			}
-		}
-	}
-
-	private static void addAndSortToLastTenInstruments(Instrument instrument) {
-		String name = instrument.getName();
-		if (INSTRUMENTS.get(name).size() == CommonConstants.NEWST) {
-			INSTRUMENTS.get(name).set(INSTRUMENTS.get(name).size()-1, instrument);
-			Collections.sort(INSTRUMENTS.get(name));
 		}
 	}
 
