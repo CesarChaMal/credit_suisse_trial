@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# command line runner for the Credit Suisse Trial
+# command line runner for the Credit Suisse Trial app
 #
 
 function cleanup() {
