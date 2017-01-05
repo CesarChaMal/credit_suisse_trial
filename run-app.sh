@@ -23,7 +23,7 @@ while ! nc localhost 8080 > /dev/null 2>&1 < /dev/null; do
 done
 
 COUNTER=0
-while [$COUNTER -lt 10]; do
+while [  $COUNTER -lt 10 ]; do
 	curl -i -X GET -H Accept:application/json "http://localhost:8080/credit_suisse_trial/"
 	sleep 5  
 	echo The counter is $COUNTER
