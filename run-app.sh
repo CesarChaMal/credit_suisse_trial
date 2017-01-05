@@ -22,9 +22,13 @@ while ! nc localhost 8080 > /dev/null 2>&1 < /dev/null; do
     sleep 1  
 done
 
-while [ 1 -lt 2 ]; do
-	sleep 5  
+COUNTER=0
+while [$COUNTER -lt 10]; do
 	curl -i -X GET -H Accept:application/json "http://localhost:8080/credit_suisse_trial/"
+	sleep 5  
+	echo The counter is $COUNTER
+	let COUNTER=COUNTER+1
 done
+#curl -i -X GET -H Accept:application/json "http://localhost:8080/credit_suisse_trial/"
 #CLIENT_PID=$!
 cleanup
