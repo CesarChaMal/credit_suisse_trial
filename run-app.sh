@@ -18,13 +18,13 @@ mvn jetty:run & SERVER_PID=$!
 
 while ! nc localhost 8080 > /dev/null 2>&1 < /dev/null; do
     echo "$(date) - waiting for server at localhost:8080..."
-	echo "$SERVER_PID"
+	#echo "$SERVER_PID"
     sleep 1  
 done
 
-while ! nc localhost 8080 > /dev/null 2>&1 < /dev/null; do
+while [ 1 -lt 2 ]; do
+	sleep 5  
 	curl -i -X GET -H Accept:application/json "http://localhost:8080/credit_suisse_trial/"
-   sleep 5  
 done
 #CLIENT_PID=$!
 cleanup
