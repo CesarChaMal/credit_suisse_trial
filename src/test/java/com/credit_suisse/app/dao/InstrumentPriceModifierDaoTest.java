@@ -1,9 +1,11 @@
 package com.credit_suisse.app.dao;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -11,8 +13,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
-import com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl;
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 
 public class InstrumentPriceModifierDaoTest {
@@ -42,10 +42,10 @@ public class InstrumentPriceModifierDaoTest {
   
 //    	System.out.println(instrument.getId());
     	
-    	Assert.assertNotNull(instrument);
-    	Assert.assertEquals(new Long(1), instrumentList.get(0).getId());
-    	Assert.assertEquals("INSTRUMENT1", instrumentList.get(0).getName());
-    	Assert.assertEquals(1.05, instrumentList.get(0).getModifier(), 0.001);
+    	assertNotNull(instrument);
+    	assertEquals(new Long(1), instrumentList.get(0).getId());
+    	assertEquals("INSTRUMENT1", instrumentList.get(0).getName());
+    	assertEquals(1.05, instrumentList.get(0).getModifier(), 0.001);
     }
 
     @After

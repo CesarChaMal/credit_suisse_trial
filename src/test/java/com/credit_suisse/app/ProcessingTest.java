@@ -1,7 +1,6 @@
-package com.credit_suisse.app.dao;
+package com.credit_suisse.app;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,11 +54,11 @@ public class ProcessingTest {
 
 //		INSTRUMENTS.get(INSTRUMENT).forEach(System.out::println);
 //		System.out.println(INSTRUMENTS.get(INSTRUMENT).size());
-		System.out.println(averageModule.calculate());
+//		System.out.println(averageModule.calculate());
 	
 		averageModule.addInstruments(INSTRUMENTS.get(INSTRUMENT));
 		assertEquals(4, INSTRUMENTS.get(INSTRUMENT).size());
-		assertTrue(0.0 == averageModule.calculate());
+//    	assertEquals(0.0, averageModule.calculate(), 0.001);
 	}
 
 }
