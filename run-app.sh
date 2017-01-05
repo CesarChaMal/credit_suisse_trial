@@ -13,7 +13,7 @@ trap cleanup EXIT
 # mvn -DskipTests compile
 mvn compile test
 
-mvn jetty:run & SERVER_PID=$$
+mvn jetty:run & SERVER_PID=$!
 
 while ! nc localhost 8080 > /dev/null 2>&1 < /dev/null; do
     echo "$(date) - waiting for server at localhost:8080..."
