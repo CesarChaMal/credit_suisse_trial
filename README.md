@@ -1,4 +1,4 @@
-Credit Suisse Trial
+Credit Suisse Trial to get a job in Poland
 ===============================
 ###1. Technologies used
 * Maven 3.0
@@ -7,17 +7,4 @@ Credit Suisse Trial
 
 ###2. To Run this project locally
 ```shell
-$ mvn jetty:run
-```
-Access ```http://localhost:8080/credit_suisse_trial/```
-
-or run the linux script
-
-```shell
-$ ./run-app.sh
-```
-
-###3. To import this project into Eclipse IDE
-1. ```$ mvn eclipse:eclipse```
-2. Import into Eclipse via **existing projects into workspace** option.
-3. Done.
+$ mvn spring-boot:run
