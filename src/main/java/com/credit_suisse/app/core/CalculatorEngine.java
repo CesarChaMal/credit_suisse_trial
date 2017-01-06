@@ -128,10 +128,9 @@ public class CalculatorEngine {
 		for (Entry<String, Instrument> instrumentModule : MODULES.entrySet()) {
 			if (multiplier != null){
 				List<InstrumentPriceModifier> instrumentPriceModifier = multiplier.findByNameList(instrumentModule.getKey());
-//				multiplierValue = instrumentPriceModifier != null ? instrumentPriceModifier.get(0).getModifier() : 1;
+				multiplierValue = instrumentPriceModifier != null ? instrumentPriceModifier.get(0).getModifier() : 1;
 				System.out.println(instrumentPriceModifier);
 			}
-			
 			System.out.println(instrumentModule.getKey() + ":" + instrumentModule.getValue().calculate());
 			System.out.println(instrumentModule.getKey() + " multiplier:" + multiplierValue);
 //			result.put(instrumentModule.getKey(), instrumentModule.getValue().calculate());

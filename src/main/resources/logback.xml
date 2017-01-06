@@ -13,7 +13,7 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="com.credit_suisse" level="debug" additivity="false">
+	<logger name="com.credit_suisse.app" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	 
