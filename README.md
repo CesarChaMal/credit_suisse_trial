@@ -10,7 +10,8 @@ Credit Suisse Trial to get a job in Poland
 $ mvn spring-boot:run
 
 
-In the financial world we're operating on a term "financial instrument". You can think of it as of a collection of prices of 
+In the financial world we're operating on a term "financial instrument". 
+You can think of it as of a collection of prices of 
 currencies, commodities, derivatives, etc.
 
 
