@@ -30,11 +30,11 @@ public class WelcomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(Model model) {
 
-		InstrumentPriceModifier instrument = instrumentPriceModifierDao.findByName("INSTRUMENT1");
-		logger.debug("instrument:" + instrument);
-		
-		List<InstrumentPriceModifier> instrumentList = instrumentPriceModifierDao.findByNameList("INSTRUMENT1");
-		logger.debug("instrument:" + instrumentList.get(0));
+//		InstrumentPriceModifier instrument = instrumentPriceModifierDao.findByName("INSTRUMENT1");
+//		logger.debug("instrument:" + instrument);
+//		
+//		List<InstrumentPriceModifier> instrumentList = instrumentPriceModifierDao.findByNameList("INSTRUMENT1");
+//		logger.debug("instrument:" + instrumentList.get(0));
 		
 		List<InstrumentPriceModifier> modifiers = instrumentPriceModifierDao.findAll();
 

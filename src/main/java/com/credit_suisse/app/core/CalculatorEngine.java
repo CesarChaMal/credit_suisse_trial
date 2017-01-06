@@ -41,7 +41,7 @@ public class CalculatorEngine {
 	private volatile static CalculatorEngine INSTANCE;
 
 	static {
-		init();
+//		init();
 	}
 
 	private static void init() {
@@ -75,7 +75,7 @@ public class CalculatorEngine {
 	private CalculatorEngine(String inputPath) {
 		logger.debug(String.format("Input file path: %s", inputPath));
 		this.inputPath = inputPath;
-//		init();
+		init();
 	}
 	
 	public static CalculatorEngine getInstance(String inputPath) {
@@ -113,11 +113,9 @@ public class CalculatorEngine {
 				moduleDest.addInstruments(module.getInstruments());
 				instrumentOri.setInstrumentCalculateBehavior(moduleDest);
 //				System.out.println(Arrays.deepToString(module.getInstruments().toArray()));
-//				module.refresh();
 			} else {
 				AverageNewstInstrumentsModule module = (AverageNewstInstrumentsModule) MODULES.get(name).getInstrumentCalculateBehavior();
 				module.getInstruments().add(instrument);
-//				addAndSortToLastTenInstruments(instrument);
 			}
 		}
 	}

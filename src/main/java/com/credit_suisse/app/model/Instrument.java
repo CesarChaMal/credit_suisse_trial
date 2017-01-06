@@ -13,7 +13,7 @@ public abstract class Instrument implements Comparable<Instrument> {
 		return this.instrumentCalculateBehavior;
 	}
 
-	public void setInstrumentCalculateBehavior(InstrumentCalculateBehavior instrumentCalculateBehavior) {
+	public synchronized void setInstrumentCalculateBehavior(InstrumentCalculateBehavior instrumentCalculateBehavior) {
 		this.instrumentCalculateBehavior = instrumentCalculateBehavior;
 	}
 	
