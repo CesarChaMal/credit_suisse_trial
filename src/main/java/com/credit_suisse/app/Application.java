@@ -17,25 +17,25 @@ public class Application {
     @Autowired
     static public ApplicationContext ctx;
 
-//	public static void main(String[] args) {
-//		String inputPath = "src/main/resources/input.txt";
-//		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
-//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
-//		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
-//			@Override
-//			public Double calculate() {
-//				double sum = 0;
-//				int counter = 0;
-//				for (Instrument i : getInstruments()) {
-//					sum += i.getPrice();
-//					counter++;
-//				}
-//				return sum*2;
-//			}
-//		});
-//		
-//		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
-//		calculator.addModule(newInstrument);
-//		calculator.calculate(instrumentPriceModifierDao);
-//	}
+	public static void main(String[] args) {
+		String inputPath = "src/main/resources/input.txt";
+		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
+		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
+			@Override
+			public Double calculate() {
+				double sum = 0;
+				int counter = 0;
+				for (Instrument i : getInstruments()) {
+					sum += i.getPrice();
+					counter++;
+				}
+				return sum*2;
+			}
+		});
+		
+		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
+		calculator.addModule(newInstrument);
+		calculator.calculate(instrumentPriceModifierDao);
+	}
 }
