@@ -34,7 +34,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 			List<Person> results = jdbcTemplate.query("SELECT first_name, last_name FROM people", new RowMapper<Person>() {
 				@Override
 				public Person mapRow(ResultSet rs, int row) throws SQLException {
-					return new Person(rs.getString(1), rs.getString(2));
+					return new Person(rs.getString(1), new Double(9));
 				}
 			});
 

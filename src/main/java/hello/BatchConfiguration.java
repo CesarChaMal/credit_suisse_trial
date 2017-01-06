@@ -41,7 +41,7 @@ public class BatchConfiguration {
         reader.setResource(new ClassPathResource("sample-data.csv"));
         reader.setLineMapper(new DefaultLineMapper<Person>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
-                setNames(new String[] { "firstName", "lastName" });
+                setNames(new String[] { "instrumentName", "date","value" });
             }});
             setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
                 setTargetType(Person.class);

@@ -3,14 +3,41 @@ package hello;
 public class Person {
     private String lastName;
     private String firstName;
+    private String instrumentName;
+    private String date;
+    private Double value;
 
-    public Person() {
+    public String getInstrumentName() {
+		return instrumentName;
+	}
+
+	public void setInstrumentName(String instrumentName) {
+		this.instrumentName = instrumentName;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Double getValue() {
+		return value;
+	}
+
+	public void setValue(Double value) {
+		this.value = value;
+	}
+
+	public Person() {
 
     }
 
-    public Person(String firstName, String lastName) {
+    public Person(String firstName, Double value) {
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.value = value;
     }
 
     public void setFirstName(String firstName) {
