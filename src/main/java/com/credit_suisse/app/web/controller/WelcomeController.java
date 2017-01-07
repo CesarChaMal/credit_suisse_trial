@@ -69,7 +69,7 @@ public class WelcomeController {
 		
 //		CalculatorEngine calculator = new CalculatorEngine(inputPath);
 		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
-//		calculator.addModule(newInstrument);
+		calculator.addModule(newInstrument);
 
 		model.addAttribute("modifiers", modifiers);
 		model.addAttribute("instruments", calculator.calculate(instrumentPriceModifierDao));
