@@ -14,4 +14,5 @@ public interface InstrumentPriceModifierDao {
 	
 	List<InstrumentPriceModifier> findAll();
 
+	void setMultiplier(String instrumentName, double multiplier);
 }
