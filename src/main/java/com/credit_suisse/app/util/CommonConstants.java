@@ -11,6 +11,6 @@ public class CommonConstants {
 //    public static final Integer INSTRUMENTS_COUNT = 10000;
     public static final Integer INSTRUMENTS_COUNT = 10;
 //    public static final Integer INSTRUMENTS_COUNT = 7;
-    public static final Integer NEWST = 10;
-//    public static final Integer NEWST = 3;
+//    public static final Integer NEWST = 10;
+    public static final Integer NEWST = 3;
 }
