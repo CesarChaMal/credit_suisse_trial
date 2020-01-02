@@ -51,7 +51,8 @@ public class InstrumentFileGenerator {
 //			for (int i = 1; i <= 200; i++) {
 //			for (int i = 1; i <= 5000; i++) {
 //			for (int i = 1; i <= 1000; i++) {
-			for (long i = 1; i <= 10000000; i++) {
+			for (long i = 1; i <= 10000000; i++) { // 330 mb
+//			for (long i = 1; i <= 100000000; i++) { // 1.5 gb
 				instrument = "INSTRUMENT" + counter;
 				
 				if (counter > 3){
