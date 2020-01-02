@@ -51,7 +51,7 @@ public class InstrumentFileGenerator {
 //			for (int i = 1; i <= 200; i++) {
 //			for (int i = 1; i <= 5000; i++) {
 //			for (int i = 1; i <= 1000; i++) {
-			for (long i = 1; i <= 1000000000; i++) {
+			for (long i = 1; i <= 10000000; i++) {
 				instrument = "INSTRUMENT" + counter;
 				
 				if (counter > 3){

@@ -29,9 +29,9 @@ public class Application {
 //		String inputPath = "c:\\temp\\big_input.txt";
 //		String inputPath = "c:\\temp\\huge_input.txt";
 		
-		String inputPath = "src/main/resources/input.txt";
-//		String inputPath = "src/main/resources/big_input.txt";
-//		String inputPath = "src/main/resources/huge_input.txt";
+//		String inputPath = "src/main/resources/input.txt";
+//		String inputPath = "src/main/resources/large_input.txt";
+		String inputPath = "src/main/resources/very_huge_input.txt";
 
 		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
 
@@ -56,6 +56,5 @@ public class Application {
 		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
 		calculator.addModule(newInstrument);
 		calculator.calculate(instrumentPriceModifierDao);
-
 	}
 }
