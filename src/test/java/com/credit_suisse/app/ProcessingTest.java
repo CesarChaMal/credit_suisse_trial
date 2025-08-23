@@ -1,6 +1,6 @@
 package com.credit_suisse.app;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.credit_suisse.app.core.module.AverageModule;
 import com.credit_suisse.app.model.Instrument;
@@ -24,7 +24,7 @@ public class ProcessingTest {
 	private static final String INSTRUMENT = "INSTRUMENT1";
 
 	@Test
-	public void averageProcessingTest() {
+	void averageProcessingTest() {
 
 		INSTRUMENTS.put(INSTRUMENT, new ArrayList<Instrument>());
 

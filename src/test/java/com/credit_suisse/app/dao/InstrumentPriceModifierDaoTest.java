@@ -1,13 +1,13 @@
 package com.credit_suisse.app.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -21,8 +21,8 @@ public class InstrumentPriceModifierDaoTest {
 
     InstrumentPriceModifierDao instrumentPriceModifierDao;
     
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         //db = new EmbeddedDatabaseBuilder().addDefaultScripts().build();
     	db = new EmbeddedDatabaseBuilder()
     		.setType(EmbeddedDatabaseType.H2)
@@ -32,7 +32,7 @@ public class InstrumentPriceModifierDaoTest {
     }
 
     @Test
-    public void testFindByname() {
+    void testFindByname() {
     	NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(db);
     	InstrumentPriceModifierDaoImpl instrumentPriceModifierDao = new InstrumentPriceModifierDaoImpl();
     	instrumentPriceModifierDao.setNamedParameterJdbcTemplate(template);
@@ -48,8 +48,8 @@ public class InstrumentPriceModifierDaoTest {
     	assertEquals(1.05, instrumentList.get(0).getModifier(), 0.001);
     }
 
-    @After
-    public void tearDown() {
+    @AfterEach
+    void tearDown() {
         db.shutdown();
     }
 

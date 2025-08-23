@@ -16,11 +16,12 @@ public class HsqlDataSource {
 	//jdbc:hsqldb:mem:testdb
 	@Bean
 	public DataSource dataSource() {
-		
 		// no need shutdown, EmbeddedDatabaseFactoryBean will take care of this
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL).addScript("db/sql/hsql/create-db.sql").addScript("db/sql/hsql/insert-data.sql").build();
+		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL).
+                addScript("db/sql/hsql/create-db.sql").
+                addScript("db/sql/hsql/insert-data.sql").
+                build();
 		return db;
 	}
-
 }

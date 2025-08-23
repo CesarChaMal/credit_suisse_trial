@@ -30,7 +30,7 @@ public class InstrumentUtil {
 		}
 	};
 
-	public synchronized static Instrument defineOf(String line) {
+	public static Instrument defineOf(String line) {
 		Instrument instrument = null;
 		String[] arr = line.split("[,]");
 		if (arr.length == 3) {
@@ -81,6 +81,7 @@ public class InstrumentUtil {
 		long offset = Timestamp.valueOf(sdf.format(from)).getTime();
 		long end = Timestamp.valueOf(sdf.format(to)).getTime();
 		long diff = end - offset + 1;
+		if (diff <= 0) diff = 1; // Safety check
 		Timestamp rand = new Timestamp(offset + (long)(Math.random() * diff));
 
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);

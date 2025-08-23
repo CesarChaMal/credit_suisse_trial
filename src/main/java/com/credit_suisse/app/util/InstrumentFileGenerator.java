@@ -24,65 +24,92 @@ public class InstrumentFileGenerator {
 	
 	private static final Logger logger = LoggerFactory.getLogger(InstrumentFileGenerator.class);
 	
-	public static void GenegerateInstrument() throws IOException {
-		File fout = new File("src/main/resources/very_huge_input.txt");
-		FileOutputStream fos = new FileOutputStream(fout);
-
-		try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos))) {
-			
-//			DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-			DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String from = "2000-01-01 00:00:00";
-			String to = "2017-01-01 00:00:00";
-			Date fromDate = null;
-			Date toDate = null;
-			NumberFormat formatter = new DecimalFormat("#0.00000");     
-
-			try {
-				fromDate = sdf.parse(from);
-				toDate = sdf.parse(to);
-			} catch (ParseException e1) {
-				e1.printStackTrace();
-			}
-
-			int counter = 1;
-			String instrument = ""; 
-//			for (int i = 1; i <= 10; i++) {
-//			for (int i = 1; i <= 200; i++) {
-//			for (int i = 1; i <= 5000; i++) {
-//			for (int i = 1; i <= 1000; i++) {
-			for (long i = 1; i <= 10000000; i++) { // 330 mb
-//			for (long i = 1; i <= 100000000; i++) { // 1.5 gb
-				instrument = "INSTRUMENT" + counter;
-				
-				if (counter > 3){
-					if (i % 100 == 0){
-						counter = 0;
-					}
-					if (i % 5 == 0){
-						instrument = "INSTRUMENT" + InstrumentUtil.generateRandomNumberInteger(1, 100);
-					}
-					counter++;
-				} else {
-					if (i % 100 == 0){
-						counter++;
-					}
-				}
-					
-				String date = InstrumentUtil.generateRandomDateRange(fromDate, toDate);
-				Double number = Double.parseDouble(formatter.format(InstrumentUtil.generateRandomNumberDouble(0, 100)));
-				String instrumentGenerated = instrument + "," + date + "," + number;
-//				logger.info(instrumentGenerated);				
-				System.out.println("\n" + instrumentGenerated + "\n");				
-				showFileSize(fout);
-				
-				bw.write(instrumentGenerated);
-				bw.newLine();
-			}
+	public enum FileSize {
+		SMALL("Small (1K records)", 1000, "small_input.txt"),
+		MEDIUM("Medium (10K records)", 10000, "medium_input.txt"),
+		LARGE("Large (100K records)", 100000, "large_input.txt"),
+		HUGE("Huge (1M records)", 1000000, "huge_input.txt"),
+		MASSIVE("Massive (10M records)", 10000000, "massive_input.txt");
+		
+		private final String displayName;
+		private final long recordCount;
+		private final String fileName;
+		
+		FileSize(String displayName, long recordCount, String fileName) {
+			this.displayName = displayName;
+			this.recordCount = recordCount;
+			this.fileName = fileName;
 		}
+		
+		public String getDisplayName() { return displayName; }
+		public long getRecordCount() { return recordCount; }
+		public String getFileName() { return fileName; }
 	}
 	
-	public static void showFileSize(File file){
+	public static String generateInstrumentFile(FileSize fileSize) throws IOException {
+		return generateInstrumentFile(fileSize.getRecordCount(), fileSize.getFileName());
+	}
+
+    public static String generateInstrumentFile(long recordCount, String fileName) throws IOException {
+        File fout = new File("src/main/resources/" + fileName);
+        FileOutputStream fos = new FileOutputStream(fout);
+
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos))) {
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String from = "2000-01-01 00:00:00";
+            String to = "2017-01-01 00:00:00";
+            Date fromDate = null;
+            Date toDate = null;
+            NumberFormat formatter = new DecimalFormat("#0.00000");
+
+            try {
+                fromDate = sdf.parse(from);
+                toDate = sdf.parse(to);
+            } catch (ParseException e1) {
+                e1.printStackTrace();
+            }
+
+            int counter = 1;
+            String instrument = "";
+            for (long i = 1; i <= recordCount; i++) {
+                instrument = "INSTRUMENT" + counter;
+
+                if (counter > 3){
+                    if (i % 100 == 0){
+                        counter = 0;
+                    }
+                    if (i % 5 == 0){
+                        instrument = "INSTRUMENT" + InstrumentUtil.generateRandomNumberInteger(1, 100);
+                    }
+                    counter++;
+                } else {
+                    if (i % 100 == 0){
+                        counter++;
+                    }
+                }
+
+                String date = InstrumentUtil.generateRandomDateRange(fromDate, toDate);
+                Double number = Double.parseDouble(formatter.format(InstrumentUtil.generateRandomNumberDouble(0, 100)));
+                String instrumentGenerated = instrument + "," + date + "," + number;
+
+                if (i % 10000 == 0) {
+                    logger.info("Generated {} records", i);
+                }
+
+                bw.write(instrumentGenerated);
+                bw.newLine();
+            }
+        }
+
+        logger.info("File generation completed: {} with {} records", fileName, recordCount);
+        return fout.getAbsolutePath();
+    }
+
+	public static void GenegerateInstrument() throws IOException {
+		generateInstrumentFile(10000000, "very_huge_input.txt");
+	}
+
+    public static void showFileSize(File file){
 		if(file.exists()){
 
 			double bytes = file.length();
@@ -117,3 +144,4 @@ public class InstrumentFileGenerator {
 		}
 	}
 }
+

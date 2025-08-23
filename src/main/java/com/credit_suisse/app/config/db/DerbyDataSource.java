@@ -13,12 +13,14 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @Configuration
 public class DerbyDataSource {
 
-	//jdbc:derby:memory:testdb
-	@Bean
-	public DataSource dataSource() {
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.DERBY).addScript("db/sql/derby/create-db.sql").addScript("db/sql/derby/insert-data.sql").build();
-		return db;
-	}
-
+    //jdbc:derby:memory:testdb
+    @Bean
+    public DataSource dataSource() {
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.DERBY).
+                addScript("db/sql/derby/create-db.sql").
+                addScript("db/sql/derby/insert-data.sql").
+                build();
+        return db;
+    }
 }
