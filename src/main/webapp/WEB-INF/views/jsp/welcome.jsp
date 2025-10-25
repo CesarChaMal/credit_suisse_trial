@@ -1001,6 +1001,14 @@ fetch('check-datasets')
     })
     .catch(error => {
         console.log('Dataset check failed:', error);
+        // Ensure buttons have proper labels even if check fails
+        const sizeMap = {'SMALL': '1K', 'MEDIUM': '10K', 'LARGE': '100K', 'XLARGE': '1M'};
+        ['SMALL', 'MEDIUM', 'LARGE', 'XLARGE'].forEach(size => {
+            const button = document.getElementById('gen' + size.charAt(0).toUpperCase() + size.slice(1).toLowerCase());
+            if (button && button.innerHTML === 'Generate') {
+                button.innerHTML = `Generate ${size.charAt(0).toUpperCase() + size.slice(1).toLowerCase()} (${sizeMap[size]})`;
+            }
+        });
     });
 </script>
 

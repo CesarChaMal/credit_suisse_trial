@@ -102,3 +102,15 @@ README.html
 
 # custom
 very_huge_input.txt
+
+# Generated datasets
+input.txt
+input_*.txt
+dataset_*.txt
+*_input.txt
+*_optimized.txt
+huge_input.txt
+massive_input.txt
+massive_optimized.txt
+benchmark_*.txt
+custom_instrument_*.txt
