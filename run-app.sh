@@ -25,9 +25,20 @@ fi
 
 # Use Java 24 if available, fallback to system Java
 if command -v sdk &> /dev/null; then
-    sdk use java 24.fx-zulu 2>/dev/null || echo "Java 24 not found, using system Java"
+    echo "SDKMAN found, attempting to use Java 24..."
+    if sdk use java 24.fx-zulu 2>/dev/null; then
+        echo "Successfully switched to Java 24"
+        java -version
+    else
+        echo "Java 24 not found, installing..."
+        echo "Y" | sdk install java 24.fx-zulu
+        sdk use java 24.fx-zulu
+        echo "Java 24 installed and activated"
+        java -version
+    fi
 else
     echo "SDKMAN not found, using system Java"
+    java -version
 fi
 
 function cleanup() {
