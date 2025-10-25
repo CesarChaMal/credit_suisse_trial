@@ -794,23 +794,17 @@ function generateDataset(size) {
         }
         
         button.disabled = false;
-        const sizeMap = {'SMALL': 'Small (1K)', 'MEDIUM': 'Medium (10K)', 'LARGE': 'Large (100K)', 'XLARGE': 'X-Large (1M)'};
+        const sizeMap = {'SMALL': 'Generate Small (1K)', 'MEDIUM': 'Generate Medium (10K)', 'LARGE': 'Generate Large (100K)', 'XLARGE': 'Generate X-Large (1M)'};
         const sizeUpper = size.toUpperCase();
-        console.log('Size upper:', sizeUpper);
-        console.log('Size map lookup:', sizeMap[sizeUpper]);
-        const sizeText = sizeMap[sizeUpper] || 'Unknown';
-        const newText = `Generate ${sizeText}`;
-        console.log('Setting button text to:', newText);
+        const newText = sizeMap[sizeUpper] || 'Generate';
         button.innerHTML = newText;
-        console.log('Button text after setting:', button.innerHTML);
     })
     .catch(error => {
         console.error('Fetch error:', error);
         statusDiv.innerHTML = `<div class="generation-error">❌ Failed to generate ${size} dataset. Error: ${error.message}</div>`;
         button.disabled = false;
-        const sizeMap = {'SMALL': 'Small (1K)', 'MEDIUM': 'Medium (10K)', 'LARGE': 'Large (100K)', 'XLARGE': 'X-Large (1M)'};
-        const sizeText = sizeMap[size.toUpperCase()] || 'Unknown';
-        button.innerHTML = `Generate ${sizeText}`;
+        const sizeMap = {'SMALL': 'Generate Small (1K)', 'MEDIUM': 'Generate Medium (10K)', 'LARGE': 'Generate Large (100K)', 'XLARGE': 'Generate X-Large (1M)'};
+        button.innerHTML = sizeMap[size.toUpperCase()] || 'Generate';
     });
 }
 
@@ -985,16 +979,21 @@ fetch('check-datasets')
     .then(response => response.json())
     .then(data => {
         // Update button states based on available datasets
-        const sizeMap = {'SMALL': '1K', 'MEDIUM': '10K', 'LARGE': '100K', 'XLARGE': '1M'};
-        Object.keys(data).forEach(size => {
-            const button = document.getElementById('gen' + size.charAt(0).toUpperCase() + size.slice(1).toLowerCase());
+        const buttonConfigs = [
+            {size: 'SMALL', id: 'genSmall', text: 'Generate Small (1K)'},
+            {size: 'MEDIUM', id: 'genMedium', text: 'Generate Medium (10K)'},
+            {size: 'LARGE', id: 'genLarge', text: 'Generate Large (100K)'},
+            {size: 'XLARGE', id: 'genXlarge', text: 'Generate X-Large (1M)'}
+        ];
+        
+        buttonConfigs.forEach(config => {
+            const button = document.getElementById(config.id);
             if (button) {
-                const baseText = `Generate ${size.charAt(0).toUpperCase() + size.slice(1).toLowerCase()} (${sizeMap[size]})`;
-                if (data[size]) {
-                    button.innerHTML = '✓ ' + baseText;
+                if (data[config.size]) {
+                    button.innerHTML = '✓ ' + config.text;
                     button.style.opacity = '0.7';
                 } else {
-                    button.innerHTML = baseText;
+                    button.innerHTML = config.text;
                 }
             }
         });
@@ -1002,11 +1001,16 @@ fetch('check-datasets')
     .catch(error => {
         console.log('Dataset check failed:', error);
         // Ensure buttons have proper labels even if check fails
-        const sizeMap = {'SMALL': '1K', 'MEDIUM': '10K', 'LARGE': '100K', 'XLARGE': '1M'};
-        ['SMALL', 'MEDIUM', 'LARGE', 'XLARGE'].forEach(size => {
-            const button = document.getElementById('gen' + size.charAt(0).toUpperCase() + size.slice(1).toLowerCase());
-            if (button && button.innerHTML === 'Generate') {
-                button.innerHTML = `Generate ${size.charAt(0).toUpperCase() + size.slice(1).toLowerCase()} (${sizeMap[size]})`;
+        const buttonConfigs = [
+            {id: 'genSmall', text: 'Generate Small (1K)'},
+            {id: 'genMedium', text: 'Generate Medium (10K)'},
+            {id: 'genLarge', text: 'Generate Large (100K)'},
+            {id: 'genXlarge', text: 'Generate X-Large (1M)'}
+        ];
+        buttonConfigs.forEach(config => {
+            const button = document.getElementById(config.id);
+            if (button && (button.innerHTML === 'Generate' || button.innerHTML.includes('Generate 0'))) {
+                button.innerHTML = config.text;
             }
         });
     });

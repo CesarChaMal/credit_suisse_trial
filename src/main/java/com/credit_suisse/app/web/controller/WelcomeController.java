@@ -310,6 +310,11 @@ public class WelcomeController {
 		return "single-strategy-fragment";
 	}
 	
+	@GetMapping("/.well-known/appspecific/com.chrome.devtools.json")
+	public @ResponseBody void chromeDevTools() {
+		// Suppress Chrome DevTools 404 warnings
+	}
+	
 	@GetMapping("/check-datasets")
 	public @ResponseBody Map<String, Boolean> checkDatasets() {
 		Map<String, Boolean> availability = new java.util.HashMap<>();
